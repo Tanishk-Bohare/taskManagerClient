@@ -5,8 +5,7 @@ import Task from './Task'
 const TaskList = () => {
 
     const {tasks, getTasks} = useContext(GlobalContext)
-    console.log(tasks)
-
+    
     useEffect(() => {
         getTasks()
         // eslint-disable-next-line react-hooks/exhaustive-deps

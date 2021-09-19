@@ -6,7 +6,7 @@ const Task = ({task}) => {
 
     return (
         <li className="task task-li" >
-            {task.description}<button 
+            {task.description}: {task.completed? 'Done': 'Not done'}<button 
             className="btn" onClick={()=>deleteTask(task._id)} >x</button>
         </li>
     )
