@@ -17,6 +17,18 @@ const Tray = () => {
 
     const { isLoggedIn, logoutUser, logoutAllUser } = useContext(GlobalContext)
 
+    const handleLogout = (all) => {
+        setShowTasks(false)
+        setShowUserDetails(false)
+        setShowLogin(false)
+        setShowReg(false)
+        setShowAddTask(false)
+        if(all==="all")
+            logoutUser()
+        else 
+            logoutAllUser()
+    }
+
 
     return (
         <div>
@@ -39,6 +51,7 @@ const Tray = () => {
                         onClick={()=>{
                             setShowReg(false)
                             setShowLogin(false)
+                            setShowUserDetails(false)
                             setShowTasks(false)
                             setShowAddTask(true) 
                         }}
@@ -48,6 +61,7 @@ const Tray = () => {
                     <button 
                         className="btn" 
                         onClick={()=>{
+                            setShowUserDetails(false)
                             setShowReg(false)
                             setShowLogin(false)
                             setShowAddTask(false) 
@@ -56,8 +70,8 @@ const Tray = () => {
                         >Show Tasks
                     </button>
                      
-                    <button className="btn" onClick={()=> logoutUser() } >LogOut</button>
-                    <button className="btn" onClick={()=> logoutAllUser()} >LogOutAll</button>
+                    <button className="btn" onClick={()=> handleLogout() } >LogOut</button>
+                    <button className="btn" onClick={()=> handleLogout("all")} >LogOutAll</button>
                 </>
             :
                 <>
@@ -66,7 +80,9 @@ const Tray = () => {
                         onClick={()=>{
                             setShowReg(false)
                             setShowAddTask(false)
+                            setShowUserDetails(false)
                             setShowLogin(true)
+                            setShowTasks(false)
                         }}
                         >Login
                     </button>
@@ -74,6 +90,8 @@ const Tray = () => {
                         className="btn"
                         onClick={()=>{
                             setShowReg(true)
+                            setShowUserDetails(false)
+                            setShowTasks(false)
                             setShowLogin(false)
                             setShowAddTask(false) 
                         }}

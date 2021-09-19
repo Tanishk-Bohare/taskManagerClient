@@ -25,7 +25,7 @@ export const GlobalContextProvider = ({children}) =>{
         try {
             const res = await axios.post('users', user, {
                 headers:{'Content-type': 'application/json' } } )
-            // console.log(res.data, "error from response")
+            console.log(res.data, "error from response")
             dispatch({
                 type: 'ADD_USER',
                 payload: res.data

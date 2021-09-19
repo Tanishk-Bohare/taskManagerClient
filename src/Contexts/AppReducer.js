@@ -34,7 +34,6 @@ export default (state, action) => {
         return {
           ...state,
           loading: false,
-          user: undefined,
           isLoggedIn: false,
           token: undefined,
           tasks: []
