@@ -51,7 +51,7 @@ export default (state, action) => {
         return {
           ...state,
           loading: false,
-          tasks: action.payload
+          tasks: action.payload.data
         }
       case 'DELETE_TASK':
         return {

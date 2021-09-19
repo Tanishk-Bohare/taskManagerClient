@@ -5,6 +5,7 @@ import Task from './Task'
 const TaskList = () => {
 
     const {tasks, getTasks} = useContext(GlobalContext)
+    console.log(tasks)
 
     useEffect(() => {
         getTasks()
