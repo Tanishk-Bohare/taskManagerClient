@@ -34,6 +34,5 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.12"
-  },
-  "proxy": "https://task-manager-apiv2.herokuapp.com/api/v1/"
+  }
 }

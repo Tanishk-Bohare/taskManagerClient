@@ -12,6 +12,8 @@ const initialState = {
     loading: true
 }
 
+const uri= "https://task-manager-apiv2.herokuapp.com/api/v1/"
+
 // Create context 
 export const GlobalContext = createContext(initialState)
 
@@ -23,7 +25,7 @@ export const GlobalContextProvider = ({children}) =>{
     // Actions
     const addUser = async (user) => {
         try {
-            const res = await axios.post('users', user, {
+            const res = await axios.post(uri+'users', user, {
                 headers:{'Content-type': 'application/json' } } )
             console.log(res.data, "error from response")
             dispatch({
@@ -40,7 +42,7 @@ export const GlobalContextProvider = ({children}) =>{
 
     const loginUser = async (user) => {
         try {
-            const res = await axios.post('users/login', user, {
+            const res = await axios.post(uri+'users/login', user, {
                 headers:{'Content-type': 'application/json' } } )
             // console.log(res.data)
             dispatch({
@@ -57,7 +59,7 @@ export const GlobalContextProvider = ({children}) =>{
 
     const updateUser = async (user) => {
         try {
-            const res = await axios.patch('users/me', user, {
+            const res = await axios.patch(uri+'users/me', user, {
                 headers:{'Content-type': 'application/json', 
                         "Authorization" : `Bearer ${state.token}`
             } } )
@@ -77,7 +79,7 @@ export const GlobalContextProvider = ({children}) =>{
     const logoutUser = async () => {
         try {
             // console.log(state)
-            const res = await axios.post('users/logout', state.user,{
+            const res = await axios.post(uri+'users/logout', state.user,{
                 headers:{'Content-type': 'application/json',
                         "Authorization" : `Bearer ${state.token}`} } )
             // console.log(res.data)
@@ -96,7 +98,7 @@ export const GlobalContextProvider = ({children}) =>{
     const logoutAllUser = async () => {
         try {
             // console.log(state)
-            const res = await axios.post('users/logoutAll', state.user,{
+            const res = await axios.post(uri+'users/logoutAll', state.user,{
                 headers:{'Content-type': 'application/json',
                         "Authorization" : `Bearer ${state.token}`} } )
             // console.log(res.data)
@@ -114,7 +116,7 @@ export const GlobalContextProvider = ({children}) =>{
 
     const deleteUser = async () => {
         try {
-            const res = await axios.delete('users/me', {
+            const res = await axios.delete(uri+'users/me', {
                 headers:{'Content-type': 'application/json',
                         "Authorization" : `Bearer ${state.token}`
              } } )
@@ -133,7 +135,7 @@ export const GlobalContextProvider = ({children}) =>{
     
     const getTasks = async () => {
         try {
-            const res= await axios.get('tasks', {
+            const res= await axios.get(uri+'tasks', {
                  headers: {"Authorization" : `Bearer ${state.token}`} })
             // console.log(res.data)
             dispatch({
@@ -153,7 +155,7 @@ export const GlobalContextProvider = ({children}) =>{
 
     const deleteTask = async (id) => {
         try {
-            await axios.delete(`tasks/${id}`, { 
+            await axios.delete(uri+`tasks/${id}`, { 
                 headers: {"Authorization" : `Bearer ${state.token}`} })
             
             dispatch({
@@ -177,7 +179,7 @@ export const GlobalContextProvider = ({children}) =>{
         }
 
         try {
-            const res = await axios.post('tasks', task, config)
+            const res = await axios.post(uri+'tasks', task, config)
             dispatch({
                 type: 'ADD_TASK',
                 payload: res.data

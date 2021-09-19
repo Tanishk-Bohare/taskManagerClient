@@ -24,9 +24,9 @@ const Tray = () => {
         setShowReg(false)
         setShowAddTask(false)
         if(all==="all")
-            logoutUser()
-        else 
             logoutAllUser()
+        else 
+            logoutUser()
     }
 
 
